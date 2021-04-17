@@ -1,2 +1,12 @@
-@import './common/index';
-@import './pages/index';
+@import "./common/index";
+
+body {
+  color: $body;
+  font-family: $font;
+
+  button {
+    &:focus {
+      box-shadow: none !important;
+    }
+  }
+}

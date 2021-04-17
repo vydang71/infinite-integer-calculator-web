@@ -1,0 +1,19 @@
+.app-btn {
+  &--primary {
+    color: $white;
+    background: $primary;
+    border: 1px solid $primary;
+  }
+
+  &--light {
+    color: $body;
+    background: $light;
+    border: 1px solid $light;
+  }
+
+  &--secondary {
+    color: $body;
+    background: $secondary;
+    border: 1px solid $secondary;
+  }
+}
