@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Head from "next/head";
 import CalcButton from "../components/CalcButton";
 
@@ -15,29 +15,27 @@ interface CalcButtonItem {
 }
 
 const calcButtons: Array<CalcButtonItem> = [
-  { content: "(", color: ColorType.SECONDARY },
-  { content: ")", color: ColorType.SECONDARY },
-  { content: "%", color: ColorType.SECONDARY },
-  { content: <i className="fas fa-backspace" />, color: ColorType.SECONDARY },
+  { content: "÷", color: ColorType.SECONDARY },
   { content: "7", color: ColorType.LIGHT },
   { content: "8", color: ColorType.LIGHT },
   { content: "9", color: ColorType.LIGHT },
-  { content: "÷", color: ColorType.SECONDARY },
+  { content: "×", color: ColorType.SECONDARY },
   { content: "4", color: ColorType.LIGHT },
   { content: "5", color: ColorType.LIGHT },
   { content: "6", color: ColorType.LIGHT },
-  { content: "×", color: ColorType.SECONDARY },
+  { content: "−", color: ColorType.SECONDARY },
   { content: "1", color: ColorType.LIGHT },
   { content: "2", color: ColorType.LIGHT },
   { content: "3", color: ColorType.LIGHT },
-  { content: "−", color: ColorType.SECONDARY },
-  { content: "0", color: ColorType.LIGHT },
-  { content: ".", color: ColorType.LIGHT },
-  { content: "=", color: ColorType.PRIMARY },
   { content: "+", color: ColorType.SECONDARY },
+  { content: "0", color: ColorType.LIGHT },
+  { content: <i className="fas fa-backspace" />, color: ColorType.SECONDARY },
+  { content: "=", color: ColorType.PRIMARY },
 ];
 
 const IndexPage: FC = () => {
+  const [calculation, setCalculation] = useState();
+
   return (
     <div>
       <Head>
@@ -59,6 +57,7 @@ const IndexPage: FC = () => {
                 type="text"
                 placeholder="0"
                 className="w-100 text-right border-0 h2 mb-0"
+                pattern="^[0-9]*$"
               />
             </div>
           </div>
