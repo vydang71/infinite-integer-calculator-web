@@ -9,4 +9,10 @@ body {
       box-shadow: none !important;
     }
   }
+
+  input {
+    &:focus {
+      outline: none !important;
+    }
+  }
 }
