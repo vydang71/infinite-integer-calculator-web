@@ -10,8 +10,8 @@ enum ColorType {
 
 interface CalcButtonItem {
   content: string | JSX.Element;
-  color?: ColorType;
-  onClick?: Function;
+  color: ColorType;
+  handleClick?: Function;
 }
 
 const calcButtons: Array<CalcButtonItem> = [
@@ -34,7 +34,7 @@ const calcButtons: Array<CalcButtonItem> = [
 ];
 
 const IndexPage: FC = () => {
-  const [calculation, setCalculation] = useState();
+  const [calculation, setCalculation] = useState<string>("0");
 
   return (
     <div>
@@ -42,10 +42,10 @@ const IndexPage: FC = () => {
         <title>Infinite Integer calculator</title>
       </Head>
       <div className="container mt-5">
-        <h1 className="text-center">Infinite Integer Calculator</h1>
+        <h1 className="text-center mb-4">Infinite Integer Calculator</h1>
         <div className="mx-lg-5 px-lg-5 mx-md-5 px-md-5">
           {/* Input */}
-          <div className="card my-3">
+          <div className="card mb-3">
             <div className="card-body">
               <div className="row">
                 <div className="col">
@@ -57,7 +57,7 @@ const IndexPage: FC = () => {
                 type="text"
                 placeholder="0"
                 className="w-100 text-right border-0 h2 mb-0"
-                pattern="^[0-9]*$"
+                value={calculation}
               />
             </div>
           </div>
@@ -67,7 +67,11 @@ const IndexPage: FC = () => {
             {calcButtons.map(
               (button: CalcButtonItem, index: number): JSX.Element => (
                 <div key={`calc-button-${index}`} className="col-3">
-                  <CalcButton classnames={`app-btn--${button.color}`}>
+                  <CalcButton
+                    classnames={`app-btn--${button.color}`}
+                    content={button.content}
+                    setCalculation={setCalculation}
+                  >
                     {button.content}
                   </CalcButton>
                 </div>
