@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import Head from "next/head";
 import CalcButton from "../components/CalcButton";
+import { everyone } from "../hocs/everyone";
 
 enum ColorType {
   PRIMARY = "primary",
@@ -86,4 +87,4 @@ const IndexPage: FC = () => {
   );
 };
 
-export default IndexPage;
+export default everyone(IndexPage);
