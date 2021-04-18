@@ -41,8 +41,11 @@ const CalcButton: FC<Props> = ({
         console.log("tinh nha");
         break;
 
+      // Clear element
       default:
-        setCalculation(originCalculation.slice(0, -1));
+        if (originCalculation.slice(-1) === " ")
+          setCalculation(originCalculation.slice(0, -2));
+        else setCalculation(originCalculation.slice(0, -1));
         break;
     }
   };
