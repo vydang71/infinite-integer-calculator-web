@@ -9,7 +9,7 @@ enum ColorType {
 }
 
 interface CalcButtonItem {
-  content: string | JSX.Element;
+  content: string;
   color: ColorType;
   handleClick?: Function;
 }
@@ -29,12 +29,12 @@ const calcButtons: Array<CalcButtonItem> = [
   { content: "3", color: ColorType.LIGHT },
   { content: "+", color: ColorType.SECONDARY },
   { content: "0", color: ColorType.LIGHT },
-  { content: <i className="fas fa-backspace" />, color: ColorType.SECONDARY },
+  { content: "Clear", color: ColorType.SECONDARY },
   { content: "=", color: ColorType.PRIMARY },
 ];
 
 const IndexPage: FC = () => {
-  const [calculation, setCalculation] = useState<string>("0");
+  const [calculation, setCalculation] = useState<string>("");
 
   return (
     <div>
@@ -58,6 +58,7 @@ const IndexPage: FC = () => {
                 placeholder="0"
                 className="w-100 text-right border-0 h2 mb-0"
                 value={calculation}
+                onChange={(e) => setCalculation(e.target.value)}
               />
             </div>
           </div>
@@ -70,6 +71,7 @@ const IndexPage: FC = () => {
                   <CalcButton
                     classnames={`app-btn--${button.color}`}
                     content={button.content}
+                    originCalculation={calculation}
                     setCalculation={setCalculation}
                   >
                     {button.content}
